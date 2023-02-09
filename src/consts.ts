@@ -13,13 +13,6 @@ export const OPEN_GRAPH = {
 	}
 };
 
-export const KNOWN_LANGUAGES = {
-	English: 'en',
-} as const;
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
-
-export const GITHUB_EDIT_URL = `https://github.com/homecentr/docs/tree/main`;
-
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
 	indexName: 'XXXXXXXXXX',
@@ -43,21 +36,6 @@ export type Sidebar = SidebarSection[]
 
 export const SIDEBAR: Sidebar =
 	[{
-		header: "About",
-		children: [
-			{ text: 'Introduction', link: 'about/introduction', icon: '/icons/about.png' },
-			{ text: 'Architecture', link: 'about/architecture', icon: '/icons/structural.png' },
-			{ text: 'Resiliency', link: 'about/resiliency', icon: '/icons/error.png' },
-			{ text: 'Network', link: 'about/network', icon: '/icons/network-cable.png'},
-			{ text: 'Storage', link: 'about/storage', icon: '/icons/stack.png' },
-			{ text: 'Power distribution', link: 'about/power-distribution', icon: '/icons/power.png' },
-			{ text: 'GitOps', link: 'about/gitops', icon: '/icons/git.png' },
-			{ text: 'Security', link: 'about/security', icon: '/icons/cyber-security.png' },
-			{ text: 'Identity & SSO', link: 'about/identity', icon: '/icons/security.png' },
-			{ text: 'Remote Access', link: 'about/remote-access', icon: '/icons/vpn.png' },
-		],
-	},
-	{
 		header: "Selfhosted",
 		children: ([
 			{ text: 'Argo CD', link: 'selfhosted/argo-cd', icon: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/argocd.png' },
