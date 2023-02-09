@@ -15,5 +15,5 @@ export default defineConfig({
   react()
   // tailwind()
   , mdx()],
-  site: `https://astro.build`
+  site: `https://homecentr.github.io/docs`
 });
