@@ -1,0 +1,201 @@
+---
+title: Network
+menuIcon: /icons/network-cable.png
+menuOrder: 4
+---
+import NetworkSubnet from "../../components/Content/NetworkSubnet.astro"
+
+![Network diagram](/network.png)
+
+## Subnets
+
+### WAN
+<NetworkSubnet
+    cablingColor="#000"
+    cidr="192.168.10.0/24"
+    vlanId="Not applicable"
+    dhcpRange="Not applicable"
+    dnsServers="N/A"
+    internetAccess={true}>
+    <table slot="staticAssignments">
+        <tr>
+            <tr><td>192.168.10.200</td><td><a href="/hardware/ubiquiti-usg-pro4">Ubiquiti USG-PRO4 (WAN port)</a></td></tr>
+        </tr>
+    </table>
+    <p slot="description">Network between gateway and ISP's antenna. CIDR range provided by ISP and cannot be changed.</p>
+</NetworkSubnet>
+
+### Infrastructure
+<NetworkSubnet
+    cablingColor="#fff"
+    cidr="10.1.0.0/24"
+    vlanId="Not applicable"
+    dhcpRange="10.1.1.50 - 10.1.1.150"
+    dnsServers="External (Cloudflare)"
+    internetAccess={true}>
+    <table slot="staticAssignments">
+        <tr>
+            <tr><td>10.1.1.1</td><td><a href="/hardware/ubiquiti-usg-pro4">Ubiquiti USG-PRO4 (LAN port)</a></td></tr>
+            <tr><td>10.1.1.10</td><td><a href="/hardware/ubiquiti-us-24">Ubiquiti US-24</a></td></tr>
+            <tr><td>10.1.1.11</td><td><a href="/hardware/ubiquiti-us-8-150w">Ubiquiti US-8-150W</a></td></tr>
+            <tr><td>10.1.1.20</td><td><a href="/hardware/ubiquiti-uap-nanohd">Ubiquiti UIAP-nanoHD</a></td></tr>
+            <tr><td>10.1.1.21</td><td><a href="/hardware/ubiquiti-uap-nanohd">Ubiquiti UIAP-nanoHD</a></td></tr>
+            <tr><td>10.1.1.22</td><td><a href="/hardware/ubiquiti-ac-lite">Ubiquiti UAP-AC-Lite</a></td></tr>
+        </tr>
+    </table>
+    <p slot="description">Trunk network between network infrastructure devices.</p>
+</NetworkSubnet>
+
+### Services
+<NetworkSubnet
+    cablingColor="#FFBD2E"
+    cidr="10.1.2.0/24"
+    vlanId="20"
+    dhcpRange="10.1.2.220 - 10.1.2.250"
+    dnsServers="DHCP assigns internal to allow PXE boot, nodes are configured to use external (Cloudflare)"
+    internetAccess={true}>
+        <div slot="staticAssignments">
+            <p class="static-assignment-group">Physical hosts</p>
+            <table>
+                <tr>
+                    <tr><td>10.1.2.16</td><td><a href="/hardware/dell-poweredge-r510">Dell R510 / iDRAC</a></td></tr>
+                    <tr><td>10.1.2.17</td><td><a href="/selfhosted/proxmox">Dell R510 / Proxmox</a></td></tr>
+                    <tr><td>10.1.2.18-20</td><td>Reserved</td></tr>
+                    <tr><td>10.1.2.21</td><td><a href="/hardware/dell-poweredge-r530">Dell R530 / iDRAC</a></td></tr>
+                    <tr><td>10.1.2.22</td><td><a href="/selfhosted/proxmox">Dell R530 / Proxmox</a></td></tr>
+                    <tr><td>10.1.2.23-25</td><td>Reserved</td></tr>
+                    <tr><td>10.1.2.26</td><td><a href="/selfhosted/proxmox">HP EliteDesk G1 800 / Proxmox</a></td></tr>
+                </tr>
+            </table>
+            <br />
+
+            <p class="static-assignment-group">Virtual hosts</p>
+            <table>
+                <tr>
+                    <tr><td>10.1.2.48</td><td>kube1 (on Dell R510)</td></tr>{/* Link to kubernetes */}
+                    <tr><td>10.1.2.49</td><td>kube2 (on Dell R530)</td></tr>
+                    <tr><td>10.1.2.50</td><td>kube3 (on HP EliteDesk)</td></tr>
+                </tr>
+            </table>
+            <br />
+
+            <p class="static-assignment-group">Services</p>
+            Range 10.1.2.128-10.1.2.191 is used for services hosted in the <a href="/selfhosted/kubernetes">Kubernetes</a> cluster with a dedicated ip address. See the individual service pages for ip assignments.
+        </div>
+        <p slot="description">Subnet dedicated to servers. Other subnets must be explicitly allowed to access individual services. Despite zero-trust approach this minimizes the possibility of brute force or flood attacks from possibly malicious devices.</p>
+    </NetworkSubnet>
+
+### Services - Storage
+<NetworkSubnet
+    cablingColor="#872DE6"
+    cidr="10.1.7.0/24"
+    vlanId="70"
+    dhcpRange="None"
+    dnsServers="None"
+    internetAccess={false}>
+    <div slot="staticAssignments">
+        <table>
+            <tr>
+                <tr><td>10.1.7.17</td><td><a href="../selfhosted/gluster">Dell R510 / Gluster</a></td></tr>
+                <tr><td>10.1.7.22</td><td><a href="../selfhosted/gluster">Dell R530 / Gluster</a></td></tr>
+                <tr><td>10.1.7.26</td><td><a href="../selfhosted/gluster">HP EliteDesk G1 800 / Gluster</a></td></tr>
+            </tr>
+        </table>
+    </div>
+    <p slot="description">
+        Security cameras around the house and the doorbell which also works as a security camera. The internet access is limited to the doorbell which requires it for its operation.
+    </p>
+</NetworkSubnet>
+
+### Services - Lab
+<NetworkSubnet
+    cablingColor="#FF8000"
+    cidr="10.1.8.0/24"
+    vlanId="80"
+    dhcpRange="10.1.8.220 - 10.1.8.250"
+    dnsServers="External"
+    internetAccess={true}>
+    <div slot="staticAssignments">Ad-hoc</div>
+    <p slot="description">
+        Contains non-production environment of the services.
+    </p>
+</NetworkSubnet>
+
+### Home
+<NetworkSubnet
+    cablingColor="#3895FF"
+    cidr="10.1.3.0/24"
+    vlanId="30"
+    dhcpRange="10.1.3.25 - 10.1.3.254"
+    dnsServers="Internal"
+    internetAccess={true}>
+    <table slot="staticAssignments">
+        <tr>
+            <tr><td>10.1.3.5</td><td>HP LaserJet printer</td></tr>
+            <tr><td>10.1.3.6</td><td>Canon Selphy printer</td></tr>
+        </tr>
+    </table>
+    <p slot="description">Home devices (laptops, phones, smart home devices etc.). Printers are placed in this subnet because it simplifies their auto-discovery and installation.</p>
+</NetworkSubnet>
+
+### Guests
+<NetworkSubnet
+    cablingColor="#16C082"
+    cidr="10.1.4.0/24"
+    vlanId="40"
+    dhcpRange="10.1.4.25 - 10.1.4.254"
+    dnsServers="External"
+    internetAccess={true}>
+    <div slot="staticAssignments">None</div>
+    <p slot="description">
+        This subnet gives only access to the internet. No routing to other subnets should be allowed. It is used for two usecases:
+        <ul>
+            <li>Visitors who need internet access - it doesn't make sense to let them on the inner network</li>
+            <li>Smart home devices which don't have a locally accessible interface and hence just need internet access.</li>
+        </ul>
+    </p>
+</NetworkSubnet>
+
+### Toxic
+<NetworkSubnet
+    cablingColor="#FF3333"
+    cidr="10.1.5.0/24"
+    vlanId="50"
+    dhcpRange="10.1.5.50 - 10.1.5.200"
+    dnsServers="Internal (to allow PXE boot)"
+    internetAccess={true}>
+    <div slot="staticAssignments">None</div>
+    <p slot="description">
+        I occasionally fix/reinstall devices for friends which are often crawling with malwares and god knows what other digital toxic waste. On the other hand I need access to some basic tools like PXE boot and others to ease up the job.
+    </p>
+</NetworkSubnet>
+
+### Surveillance
+<NetworkSubnet
+    cablingColor="#FF3399"
+    cidr="10.1.6.0/24"
+    vlanId="60"
+    dhcpRange="10.1.6.100 - 10.1.6.150"
+    dnsServers="External (Cloudflare)"
+    internetAccess={false}>
+    <div slot="staticAssignments">
+        TBA
+    </div>
+    <p slot="description">
+        Security cameras around the house and the doorbell which also works as a security camera. There is an exception to the internet access - doorbell requires it for its operation.
+    </p>
+</NetworkSubnet>
+
+
+
+{/*
+
+| Name | Color | CIDR | VLAN ID | Internet access | Description |
+|------|-------|------|---------|-----------------|-------------|
+| WAN | <div class="subnet-color black"></div> | 192.168.10.0/24 | N/A | ✅ | Network between gateway and ISP's antenna |
+| Infrastructure | <div class="subnet-color white"></div> | 10.1.1.0/24 | 10 | ✅ | Trunk network between Unifi devices |
+| Services | <div class="subnet-color yellow"></div> | 10.1.2.0/24 | 20 | ✅ | Servers providing services to other subnets |
+| Home | <div class="subnet-color blue"></div> | 10.1.3.0/24 | 30 | ✅ | Home devices (laptops, phones, smart home devices etc.) |
+| Guests | <div class="subnet-color green"></div> | 10.1.4.0/24 | 40 | ✅ | Guest wifi devices |
+| Toxic | <div class="subnet-color red"></div> | 10.1.5.0/24 | 50 | ✅ | Repaired devices |
+*/}

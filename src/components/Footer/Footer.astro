@@ -1,0 +1,19 @@
+---
+type Props = {
+	path: string;
+};
+const { path } = Astro.props;
+---
+
+<footer>
+	Created by <a href="https://lholota.com">Lukas Holota</a>.
+</footer>
+
+<style>
+	footer {
+		margin-top: auto;
+		padding: 1rem;
+		padding-left: 2rem;
+		border-top: 3px solid var(--theme-divider);
+	}
+</style>

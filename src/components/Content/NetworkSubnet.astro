@@ -1,0 +1,49 @@
+---
+type Props = {
+    cablingColor: string
+    cidr: string
+    vlanId: number
+    dhcpRange: string
+    dnsServers: string
+    internetAccess: boolean
+    description: string
+};
+---
+<table class="subnet-details">
+    <tr>
+        <th>Cabling color</th>
+        <td><div class={"subnet-color"} style={"background-color: " + Astro.props.cablingColor}></div></td>
+    </tr>
+    <tr>
+        <th>CIDR</th>
+        <td>{Astro.props.cidr}</td>
+    </tr>
+    <tr>
+        <th>VLAN ID</th>
+        <td>{Astro.props.vlanId}</td>
+    </tr>
+    <tr>
+        <th>DHCP range</th>
+        <td>{Astro.props.dhcpRange}</td>
+    </tr>
+    <tr>
+        <th>DNS servers</th>
+        <td>{Astro.props.dnsServers}</td>
+    </tr>
+    <tr>
+        <th>Internet access</th>
+        <td>{Astro.props.internetAccess ? "✅" : "❌"}</td>
+    </tr>
+    <tr>
+        <th>Static assignments</th>
+        <td colspan="2">
+            <slot name="staticAssignments"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>
+            <slot name="description"/>
+        </td>
+    </tr>
+</table>

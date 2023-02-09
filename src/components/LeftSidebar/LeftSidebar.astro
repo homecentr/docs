@@ -1,0 +1,150 @@
+---
+import { getCollection } from 'astro:content';
+
+type Props = {
+	currentPage: string;
+};
+
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.endsWith('/')
+	? currentPage.slice(1, -1)
+	: currentPage.slice(1);
+
+const orderPropComparer = (a: any, b: any) => a.data.menuOrder - b.data.menuOrder
+const titlePropComparer = (a: any, b: any) => a.data.title.localeCompare(b.data.title)
+
+const menuSections = [
+	{ name: "general", header: "General", children: (await getCollection("general")).sort(orderPropComparer) },
+	{ name: "selfhosted", header: "Selfhosted", children: (await getCollection("selfhosted")).sort(titlePropComparer) },
+	{ name: "cloud", header: "Cloud", children: (await getCollection("cloud")).sort(titlePropComparer) },
+	{ name: "hardware", header: "Hardware", children: (await getCollection("hardware")).sort(titlePropComparer) },
+]
+
+---
+<nav aria-labelledby="grid-left">
+	<ul class="sidebar-nav-groups">
+		{
+			menuSections.map(section => (
+				<li>
+					<div class="sidebar-nav-group">
+						<h2>{section.header}</h2>
+						<ul>
+							{section.children.map(child => {
+								const fullSlug = section.name + "/" + child.slug
+								const url = Astro.site?.pathname + fullSlug;
+								return (
+									<li class={"sidebar-nav-link " + (child.data.menuIcon ? 'icon' : '')}>
+										<a href={url} aria-current={currentPageMatch === fullSlug ? 'page' : false}>
+											<span class="icon-wrapper"><img src={child.data.menuIcon}></span> <span class="text">{child.data.title}</span>
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<script is:inline>
+	window.addEventListener('DOMContentLoaded', () => {
+		var target = document.querySelector('[aria-current="page"]');
+		if (target && target.offsetTop > window.innerHeight - 100) {
+			document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+		}
+	});
+</script>
+
+<style>
+	nav {
+		width: 100%;
+		margin-right: 1rem;
+	}
+
+	.sidebar-nav-groups {
+		height: 100%;
+		padding: 2rem 0;
+		overflow-x: visible;
+		overflow-y: auto;
+		max-height: 100vh;
+	}
+
+	.sidebar-nav-groups > li + li {
+		margin-top: 2rem;
+	}
+
+	.sidebar-nav-groups > :first-child {
+		padding-top: var(--doc-padding);
+	}
+
+	.sidebar-nav-groups > :last-child {
+		padding-bottom: 2rem;
+		margin-bottom: var(--theme-navbar-height);
+	}
+
+	.sidebar-nav-group-title {
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 0.1rem 1rem;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+
+	.sidebar-nav-link a {
+		font-size: 1rem;
+		margin: 1px;
+		padding: 0.3rem 1.8rem;
+		font: inherit;
+		color: inherit;
+		text-decoration: none;
+		display: block;
+	}
+
+	.sidebar-nav-link.icon a {
+		padding-left: 0.2rem;
+	}
+
+	.sidebar-nav-link.icon a img {
+		max-width: 22px;
+		max-height: 22px;
+		vertical-align: middle;
+	}
+
+	.sidebar-nav-link.icon a span.icon-wrapper {
+		vertical-align: middle;
+		text-align: center;
+		max-width: 22px;
+		min-width: 22px;
+		display: inline-block;
+		margin-right: 0.2rem;
+	}
+
+	.sidebar-nav-link.icon a span.text {
+		vertical-align: middle;
+	}
+
+	.sidebar-nav-link a:hover,
+	.sidebar-nav-link a:focus {
+		background-color: var(--theme-bg-hover);
+	}
+
+	.sidebar-nav-link a[aria-current='page'] {
+		color: var(--theme-text-accent);
+		// background-color: var(--theme-bg-accent);
+		font-weight: 600;
+	}
+
+	@media (min-width: 50em) {
+		.sidebar-nav-groups {
+			padding: 0;
+		}
+	}
+</style>
+
+<style is:global>
+	:root.theme-dark .nav-link a[aria-current='page'] {
+		color: hsla(var(--color-base-white), 100%, 1);
+	}
+</style>

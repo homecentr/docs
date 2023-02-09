@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { link } from 'fs';
+
+type RelatedArticleLink = {
+    title: string
+    href: string
+}
+
+type RelatedArticles = {
+    kbTags: string[]
+    links: RelatedArticleLink[]
+}
+
+type Props = {
+	relatedArticles: RelatedArticles;
+};
+
+const articles = await getCollection('kb')
+
+const links: RelatedArticleLink[] = []
+
+Astro.props.relatedArticles?.links?.forEach(link => {
+    links.push(link)
+})
+
+articles.forEach(article => {
+    if(!article.data.tags) {
+        return false
+    }
+
+    if(!Astro.props.relatedArticles || !Astro.props.relatedArticles.kbTags) {
+        return false
+    }
+
+    const matchingTags = article.data.tags.filter((tag: string) => Astro.props.relatedArticles.kbTags.includes(tag))
+
+    if(matchingTags.length > 0) {
+        links.push({
+            title: article.data.title,
+            href: Astro.url.origin + '/kb/' + article.slug
+        })
+    }
+
+    return matchingTags.length > 0
+});
+---
+{ links && links.length > 0 ?
+    <h2 class="heading">Related articles</h2>
+    <ul>
+        {
+            links.map(link => (
+                <li  class="header-link depth-2"><a href={link.href}>{ link.title }</a></li>
+            ))
+        }
+    </ul>
+    : <></>
+}

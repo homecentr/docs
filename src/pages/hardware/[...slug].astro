@@ -1,0 +1,23 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+	const collection = await getCollection('hardware');
+
+	return collection.map((entry) => ({
+		params: {
+			slug: entry.slug,
+		},
+		props: entry,
+	}));
+}
+type Props = CollectionEntry<"hardware">;
+
+const post = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<MainLayout headings={headings} {...post.data}>
+	<Content />
+</MainLayout>

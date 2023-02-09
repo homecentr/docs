@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+type TagEntry = {
+    name: string
+    articles: any[]
+}
+
+const articles = await getCollection('kb')
+
+const tags: TagEntry[] = []
+
+articles.forEach(article => {
+    article.data.tags.forEach(tag => {
+        let tagEntry = tags.find(existing => existing.name == tag)
+        
+        if(!tagEntry) {
+            tagEntry = { name: tag, articles: [] }
+            tags.push(tagEntry)
+        }
+
+        tagEntry.articles.push(article)
+    })
+})
+---
+<>
+{
+    tags.sort().map(tag => 
+        (
+            <h2>{ tag.name }</h2>
+            <ul>
+                {
+                    tag.articles.map(article => (
+                        <li><a href={Astro.url.origin + '/kb/' + article.slug}>{ article.data.title }</a></li>
+                    ))
+                }
+            </ul>
+        )
+    )
+}
+</>

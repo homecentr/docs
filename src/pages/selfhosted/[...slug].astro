@@ -1,0 +1,73 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+	const collection = await getCollection("selfhosted");
+
+	return collection.map((entry) => ({
+		params: {
+			slug: entry.slug,
+		},
+		props: entry,
+	}));
+}
+type Props = CollectionEntry<"selfhosted">;
+
+const post = Astro.props;
+const { Content, headings } = await post.render();
+
+---
+
+<MainLayout headings={headings} {...post.data}>
+	<div style="margin-top: 3em">
+		<table>
+			<tr>
+				<th>Status</th>
+				<td>{post.data.status}</td>
+			</tr>
+			<tr>
+				<th>License</th>
+				<td>{post.data.license}</td>
+			</tr>
+			<tr>
+				<th>Single sign-on</th>
+				<td>{ post.data.sso }</td>
+			</tr>
+			<tr>
+				<th>MFA</th>
+				<td>{ post.data.mfa }</td>
+			</tr>
+			<tr>
+				<th>Authorization</th>
+				<td>{ post.data.authorization }</td>
+			</tr>
+			<tr>
+				<th>Exposure</th>
+				<td>{ post.data.exposure }</td>
+			</tr>
+			<tr>
+				<th>Downtime impact</th>
+				<td>{ post.data.downtimeImpact }</td>
+			</tr>
+			<tr>
+				<th>Availability strategy</th>
+				<td>{ post.data.failoverStrategy }</td>
+			</tr>
+			<tr>
+				<th>Deployed by</th>
+				<td>{ post.data.managedBy == "ansible" 
+					? (<span>Ansible / <a href="https://github.com/homecentr/platform">platform</a> repository</span>) 
+					: (<span>Argo CD / <a href="https://github.com/homecentr/kubernetes">kubernetes</a> repository</span>)  }</td>
+			</tr>
+		</table>
+	</div>
+
+	<Content />
+</MainLayout>
+
+<style>
+	.deployment-icon {
+		max-height: 16px;
+	}
+</style>
