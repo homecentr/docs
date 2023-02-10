@@ -3,6 +3,7 @@ title: Argo CD
 status: Live
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/argocd.png
 license: Open source (Apache)
+runtimeEnvironment: Kubernetes
 sso: SSO via Azure AD (integration via native OIDC)
 authorization: Driven by Azure AD groups, only administrators have access
 mfa: Yes (YubiKey WebAuthN, Microsoft Authenticator)

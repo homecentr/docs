@@ -3,6 +3,7 @@ title: CoreDNS
 status: Live
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/coredns.png
 license: Open source (Apache)
+runtimeEnvironment: Kubernetes
 sso: N/A
 authorization: N/A
 mfa: N/A

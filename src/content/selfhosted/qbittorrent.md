@@ -3,6 +3,7 @@ title: qBittorrent
 status: Evaluated
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/qbittorrent.png
 license: Open source (MIT)
+runtimeEnvironment: Kubernetes
 sso: SSO via Azure AD (integration via Pomerium proxy)
 authorization: Driven by Azure AD groups - all authenticated users have access
 mfa: Yes (YubiKey WebAuthN, Microsoft Authenticator)

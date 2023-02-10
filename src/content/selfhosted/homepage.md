@@ -3,6 +3,7 @@ title: Homepage
 status: Live
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/homepage.png
 license: Open source (GPL-3.0)
+runtimeEnvironment: Kubernetes
 sso: SSO via Azure AD (integration via native OIDC)
 authorization: Accessible to all signed in users
 mfa: Yes (YubiKey WebAuthN, Microsoft Authenticator)

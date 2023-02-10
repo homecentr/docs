@@ -3,6 +3,7 @@ title: K8s Dashboard
 status: Live
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/kubernetes-dashboard.png
 license: Open source (Apache)
+runtimeEnvironment: Kubernetes
 sso: SSO via Azure AD (integration via Pomerium proxy)
 authorization: Driven by Kubernetes Cluster Roles and Users, user objects are created via Argo CD
 mfa: Yes (YubiKey WebAuthN, Microsoft Authenticator)

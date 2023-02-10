@@ -41,6 +41,7 @@ const selfhosted = defineCollection({
 		enableToC,
 		relatedArticles,
 		status,
+		runtimeEnvironment: z.enum(['Kubernetes', 'Bare Metal']),
 		license: z.string(),
 		sso: z.string(),
 		authorization: z.string(),

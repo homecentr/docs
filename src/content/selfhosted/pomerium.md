@@ -3,6 +3,7 @@ title: Pomerium
 status: Live
 menuIcon: /icons/pomerium.png
 license: Open source (Apache)
+runtimeEnvironment: Kubernetes
 sso: SSO via Azure AD
 authorization: Depends on usage, Azure AD groups are available
 mfa: Yes, Yubikey is supported
