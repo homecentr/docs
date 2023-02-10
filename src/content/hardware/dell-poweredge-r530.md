@@ -15,7 +15,7 @@ relatedArticles:
 
 <br>
 
-Compared to [R510](./dell-poweredge-r510) this server is much faster and with better performance per watt ratio. It also starts in meaningful times and 8 drives slots make it perfect for hyperconverged cluster. Another great thing is that it supports Xeon v4 CPUs so there's an easy and fairly cheap upgrade path.
+Compared to [R510](/hardware/dell-poweredge-r510) this server is much faster and with better performance per watt ratio. It also starts in meaningful times and 8 drives slots make it perfect for hyperconverged cluster. Another great thing is that it supports Xeon v4 CPUs so there's an easy and fairly cheap upgrade path.
 
 ## Components
 

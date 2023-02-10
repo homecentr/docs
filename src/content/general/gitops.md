@@ -21,7 +21,7 @@ Changes made in this repository are currently applied manually from an arbitrary
 
 ## Kubernetes / Argo CD
 
-[Kubernetes repository](https://github.com/homecentr/kubernetes) contains [Argo CD](/selfhosted/argo-cd) Applications which define everything running inside of the Kubernetes cluster. The reason why I didn't use Ansible for this as well is that Ansible is good at adding resources but it's no good in cleaning up after itself and given that I plan to try (and then possibly remove) apps I get my hands on I want to make sure the cluster is kept clean. [Argo CD](../selfhosted/argo-cd) tracks all resources it creates for each app and removes them on app removal. Another benefit is the great user interface.
+[Kubernetes repository](https://github.com/homecentr/kubernetes) contains [Argo CD](/selfhosted/argo-cd) Applications which define everything running inside of the Kubernetes cluster. The reason why I didn't use Ansible for this as well is that Ansible is good at adding resources but it's no good in cleaning up after itself and given that I plan to try (and then possibly remove) apps I get my hands on I want to make sure the cluster is kept clean. [Argo CD](/selfhosted/argo-cd) tracks all resources it creates for each app and removes them on app removal. Another benefit is the great user interface.
 
 Changes are applied automatically by pushing them to a specific branch which Argo CD monitors (you can change the branch using ansible variables in the [platform](https://github.com/homecentr/platform) repo).
 

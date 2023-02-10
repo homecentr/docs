@@ -15,7 +15,7 @@ relatedArticles:
 
 <br>
 
-This was my first enterprise grade server. I was lucky to buy it for ~$100 in 2021 including the disks and memory. At that time I had no idea how good of a catch it was for the price... it has much lower performance to watt ratio compared to the [R530](./dell-poweredge-r530) but given how cheap it was, it has some buffer for the electricity cost :)
+This was my first enterprise grade server. I was lucky to buy it for ~$100 in 2021 including the disks and memory. At that time I had no idea how good of a catch it was for the price... it has much lower performance to watt ratio compared to the [R530](/hardware/dell-poweredge-r530) but given how cheap it was, it has some buffer for the electricity cost :)
 
 ## Components
 

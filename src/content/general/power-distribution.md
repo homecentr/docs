@@ -32,22 +32,22 @@ All power consumptions have been measured using an [EMOS Wattmeter](https://merx
         <td>15W</td>
     </tr>
     <tr>
-        <td><a href="/hardware/ubiquiti-usg-pro4">Ubiquiti USG-PROD4</a></td>
+        <td><a href="/hardware/ubiquiti#gateway--usg-pro4">Ubiquiti USG-PROD4</a></td>
         <td><img src="/icons/iec-c6.png" alt="IEC C6" height="22"></td>
         <td>19W</td>
     </tr>
     <tr>
-        <td><a href="/hardware/ubiquiti-us-24">Ubiquiti US-24</a></td>
+        <td><a href="/hardware/ubiquiti#core-switch--us-24">Ubiquiti US-24</a></td>
         <td><img src="/icons/iec-c6.png" alt="IEC C6" height="22"></td>
         <td>15W</td>
     </tr>
     <tr>
-        <td><a href="/hardware/ubiquiti-us-8-150w">Ubiquiti US-8-150W</a></td>
+        <td><a href="/hardware/ubiquiti#poe-l3-switch--us-8-150w">Ubiquiti US-8-150W</a></td>
         <td><img src="/icons/iec-c6.png" alt="IEC C6" height="22"></td>
         <td>15W.5<br>(with 3 connected PoE devices)</td>
     </tr>
     <tr>
-        <td><a href="/hardware/ubiquiti-us-8-150w">TP-Link SG1008PE</a></td>
+        <td><a href="/hardware/tplink-sg1008pe">TP-Link SG1008PE</a></td>
         <td><img src="/icons/iec-c14.png" alt="IEC C6" height="22"></td>
         <td>33W<br>(with 7 connected PoE devices)</td>
     </tr>
