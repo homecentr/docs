@@ -18,6 +18,8 @@ const relatedArticles = z.object({
 		links: []
 	})
 
+const status = z.enum(['Live', 'Evaluated', 'Deprecated'])
+
 const general = defineCollection({
 	schema: z.object({
 		title,
@@ -38,7 +40,7 @@ const selfhosted = defineCollection({
 		enableComments,
 		enableToC,
 		relatedArticles,
-		status: z.enum(['Live', 'Evaluated', 'Deprecated']),
+		status,
 		license: z.string(),
 		sso: z.string(),
 		authorization: z.string(),
@@ -57,7 +59,14 @@ const cloud = defineCollection({
 		menuIcon,
 		enableComments,
 		enableToC,
-		relatedArticles
+		relatedArticles,
+		status,
+		pricing: z.string(),
+		sso: z.string(),
+		authorization: z.string(),
+		mfa: z.string(),
+		downtimeImpact: z.string(),
+		configuration: z.string()
 	}),
 });
 

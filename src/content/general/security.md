@@ -11,7 +11,7 @@ Security is the upmost value when building anything, afterall it's my job. When 
 
 ## Kubescape
 
-[Kubernetes](/selfhosted/kubernetes) is a nightmare in security. There is so many moving pieces and configuration options it's extremely easy to expose a vulnerability. Ask anyone running containers as root or exposing wrong ports... [Kubescape](/selfhosted/kubescape) helps with this by scanning the cluster as a whole and scanning individual resources. I automatically scan all resources deployed to the cluster as a part of my [GitOps](/general/gitops) process.
+Kubernetes is a nightmare in terms of security. There is so many moving pieces and configuration options it's extremely easy to create a vulnerability. Ask anyone running containers as root or exposing wrong ports... [Kubescape](/selfhosted/kubescape) helps with this by scanning the cluster as a whole and scanning individual resources. I automatically scan all resources deployed to the cluster as a part of my [GitOps](/general/gitops) process.
 
 ## Snyk
 
