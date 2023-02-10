@@ -72,7 +72,7 @@ import NetworkSubnet from "../../components/Content/NetworkSubnet.astro"
             <p class="static-assignment-group">Virtual hosts</p>
             <table>
                 <tr>
-                    <tr><td>10.1.2.48</td><td>kube1 (on Dell R510)</td></tr>{/* Link to kubernetes */}
+                    <tr><td>10.1.2.48</td><td>kube1 (on Dell R510)</td></tr>
                     <tr><td>10.1.2.49</td><td>kube2 (on Dell R530)</td></tr>
                     <tr><td>10.1.2.50</td><td>kube3 (on HP EliteDesk)</td></tr>
                 </tr>
@@ -80,7 +80,7 @@ import NetworkSubnet from "../../components/Content/NetworkSubnet.astro"
             <br />
 
             <p class="static-assignment-group">Services</p>
-            Range 10.1.2.128-10.1.2.191 is used for services hosted in the <a href="/selfhosted/kubernetes">Kubernetes</a> cluster with a dedicated ip address. See the individual service pages for ip assignments.
+            Range 10.1.2.128-10.1.2.191 is used for services hosted in the Kubernetes cluster with a dedicated ip address. See the individual service pages for ip assignments.
         </div>
         <p slot="description">Subnet dedicated to servers. Other subnets must be explicitly allowed to access individual services. Despite zero-trust approach this minimizes the possibility of brute force or flood attacks from possibly malicious devices.</p>
     </NetworkSubnet>
@@ -96,9 +96,9 @@ import NetworkSubnet from "../../components/Content/NetworkSubnet.astro"
     <div slot="staticAssignments">
         <table>
             <tr>
-                <tr><td>10.1.7.17</td><td><a href="../selfhosted/gluster">Dell R510 / Gluster</a></td></tr>
-                <tr><td>10.1.7.22</td><td><a href="../selfhosted/gluster">Dell R530 / Gluster</a></td></tr>
-                <tr><td>10.1.7.26</td><td><a href="../selfhosted/gluster">HP EliteDesk G1 800 / Gluster</a></td></tr>
+                <tr><td>10.1.7.17</td><td><a href="/selfhosted/gluster">Dell R510 / Gluster</a></td></tr>
+                <tr><td>10.1.7.22</td><td><a href="/selfhosted/gluster">Dell R530 / Gluster</a></td></tr>
+                <tr><td>10.1.7.26</td><td><a href="/selfhosted/gluster">HP EliteDesk G1 800 / Gluster</a></td></tr>
             </tr>
         </table>
     </div>
@@ -185,17 +185,3 @@ import NetworkSubnet from "../../components/Content/NetworkSubnet.astro"
         Security cameras around the house and the doorbell which also works as a security camera. There is an exception to the internet access - doorbell requires it for its operation.
     </p>
 </NetworkSubnet>
-
-
-
-{/*
-
-| Name | Color | CIDR | VLAN ID | Internet access | Description |
-|------|-------|------|---------|-----------------|-------------|
-| WAN | <div class="subnet-color black"></div> | 192.168.10.0/24 | N/A | ✅ | Network between gateway and ISP's antenna |
-| Infrastructure | <div class="subnet-color white"></div> | 10.1.1.0/24 | 10 | ✅ | Trunk network between Unifi devices |
-| Services | <div class="subnet-color yellow"></div> | 10.1.2.0/24 | 20 | ✅ | Servers providing services to other subnets |
-| Home | <div class="subnet-color blue"></div> | 10.1.3.0/24 | 30 | ✅ | Home devices (laptops, phones, smart home devices etc.) |
-| Guests | <div class="subnet-color green"></div> | 10.1.4.0/24 | 40 | ✅ | Guest wifi devices |
-| Toxic | <div class="subnet-color red"></div> | 10.1.5.0/24 | 50 | ✅ | Repaired devices |
-*/}

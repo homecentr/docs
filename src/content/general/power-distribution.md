@@ -75,8 +75,8 @@ As you can see from the above there are several single points of failure where a
 
 ## UPS
 
-I am using two [Eaton UPS](../hardware/eaton-5e-usb-ups) which are consumer grade simply because of the price. Enterprise grade UPS costs 5-7 times more and given that power outages are rara in Czechia they suffice for what I need. Great benefit is that both UPS have a USB port and are compatible with [Network UPS Tools](../selfhosted/nut).
+I am using two [Eaton UPS](/hardware/eaton-5e-usb-ups) which are consumer grade simply because of the price. Enterprise grade UPS costs 5-7 times more and given that power outages are rara in Czechia they suffice for what I need. Great benefit is that both UPS have a USB port and are compatible with [Network UPS Tools](/selfhosted/nut).
 
 ## Shutdown procedure
 
-When power outage occurs, the [NUT](../selfhosted/nut) will get notified by UPS over USB interface. NUT will wait a configured delay (~15 mins) to avoid shutting down the system because of a short term outage. The proxmox nodes will start their shutdown procedure which first shuts down all virtual machines and then the physical hosts themselves. The split between the two UPS is designed to let the security cameras work as long as possible.
+When power outage occurs, the [NUT](/selfhosted/nut) will get notified by UPS over USB interface. NUT will wait a configured delay (~15 mins) to avoid shutting down the system because of a short term outage. The proxmox nodes will start their shutdown procedure which first shuts down all virtual machines and then the physical hosts themselves. The split between the two UPS is designed to let the security cameras work as long as possible.
