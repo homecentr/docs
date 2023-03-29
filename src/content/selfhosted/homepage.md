@@ -16,6 +16,7 @@ relatedArticles:
         - title: Homepage documentation
           href: https://gethomepage.dev/
 ---
+<br>
 
 Homepage is a clean and simple starting page to the homelab ecosystem. I really like the service auto-discovery and simple configuration via yaml.
 

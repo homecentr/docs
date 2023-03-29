@@ -11,6 +11,12 @@ To make sure knowledge does not get lost and applying changes is safe and repeat
 
 ![Architecture diagram](/architecture.png)
 
+## Cloud / Terraform
+
+[Cloud repository](https://github.com/homecentr/cloud) contains [Terraform](https://www.terraform.io/) resource definitions for products which support it and make sense (Cloudflare, Azure).
+
+Changes are applied using GitHub Actions workflows - dev environment whenever a feature branch is pushed. Production on a push to master branch.
+
 ## Platform / Ansible
 
 [Platform repository](https://github.com/homecentr/platform) contains [Ansible](https://ansible.com) playbooks and roles which can take three freshly installed Proxmox machines and set up the whole stack from scratch. This is very useful when testing new changes because it allows me to spin up a non-production environment in a couple of minutes.
@@ -24,9 +30,3 @@ Changes made in this repository are currently applied manually from an arbitrary
 [Kubernetes repository](https://github.com/homecentr/kubernetes) contains [Argo CD](/selfhosted/argo-cd) Applications which define everything running inside of the Kubernetes cluster. The reason why I didn't use Ansible for this as well is that Ansible is good at adding resources but it's no good in cleaning up after itself and given that I plan to try (and then possibly remove) apps I get my hands on I want to make sure the cluster is kept clean. [Argo CD](/selfhosted/argo-cd) tracks all resources it creates for each app and removes them on app removal. Another benefit is the great user interface.
 
 Changes are applied automatically by pushing them to a specific branch which Argo CD monitors (you can change the branch using ansible variables in the [platform](https://github.com/homecentr/platform) repo).
-
-## Cloud / Terraform
-
-[Cloud repository](https://github.com/homecentr/cloud) contains [Terraform](https://www.terraform.io/) resource definitions for all products which support it (all except for SendGrid which has minimal set up).
-
-Changes are applied using GitHub Actions workflows.

@@ -26,7 +26,7 @@ I am running Gluster directly on Proxmox level for two reasons:
 
 At the beginning I should say I am not a big fan of Kubernetes but in on-premise scenarios it makes sense. I have tried simplifying the lab to use Docker Swarm but that's unfortunately not properly supported anymore and no matter what you do at one point you start needing some of the K8s' features and then it's just easier to give up and use what the rest of the community is using. Learning curve is steep but at least it's a good CV item 🙂
 
-Another reason for Kubernetes is MetalLB which allows me publishing services under dedicated ip addresses. This is beneficial for networks isolation because if a service has a dedicated IP, I can control inbound traffic on network level (see my [network](/general/network) design where it comes handy).
+Another reason for Kubernetes is MetalLB which allows me publishing services under dedicated ip addresses. This is beneficial for networks isolation because if a service has a dedicated IP, I can control inbound traffic on network level (see my [network](/general/network) design where it comes in handy).
 
 ## Cloud components
 

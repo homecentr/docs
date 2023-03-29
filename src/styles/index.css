@@ -463,3 +463,10 @@ table.power-consumption-table tr th:first-child {
 .subnet-details .static-assignment-group {
 	font-weight: 700;
 }
+
+img.content-center {
+	max-width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block
+}

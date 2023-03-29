@@ -1,6 +1,6 @@
 ---
 title: qBittorrent
-status: Evaluated
+status: Development
 menuIcon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/qbittorrent.png
 license: Open source (MIT)
 runtimeEnvironment: Kubernetes
@@ -16,6 +16,7 @@ relatedArticles:
         - title: qBittorrent official site
           href: https://www.qbittorrent.org/
 ---
+<br>
 
 ## Description
 

@@ -10,29 +10,29 @@ relatedArticles:
 
 <br>
 
-![Ubiquiti USG-PRO4](/ubiquiti-usg-pro4.png)
+<img src="/ubiquiti-usg-pro4.png" alt="Ubiquiti USG-PRO4" class="content-center" style="max-width: 70%">
 
 USG-PRO4 is predecessor of the Ubiquiti Dream Machine, it's rack mountable and easily managed via [Unifi Controller](/selfhosted/unifi-controller). The only annoyance is lack of SFP ports for internal LAN. So far it's been running in my rack for about two years and I had to restart it once during that time when it started randomly misbehaving.
 
 ## Core switch / US-24
 
-![Ubiquiti US-24](/ubiquiti-us-24.png)
+<img src="/ubiquiti-us-24.png" alt="Ubiquiti US-24" class="content-center"  style="max-width: 70%">
 
 <br>
 
 US-24 is a 24-port managed (i.e. L3) switch. I bought a version without PoE because the PoE version was more than twice more expensive than this one at the time but it's been one of few regrets. I ended up having many more PoE devices than I anticipated and then ended up buying smaller PoE switches which make the setup more complicated.
 
 ## PoE L3 switch / US-8-150W
-
-![Ubiquiti US-8-150W](/ubiquiti-us-8-150w.png)
+<br>
+<img src="/ubiquiti-us-8-150w.png" alt="Ubiquiti US-8-150W" class="content-center" style="max-width: 70%">
 
 <br>
 
 US-8-150W is an 8-port PoE switch. Funny enough it's better than its successors which either have less PoE ports (lite version) or can handle load. The only drawback about this switch is that it's not officially supposed to be rack mounted because of the cooling. The switch itself has holes you can use to attach one rack ear but other one (the longer one) you have to buy yourself.
 
 ## Access Point / UAP-nanoHD
-
-![Ubiquiti Access point](/ubiquiti-uap.jpg)
+<br>
+<img src="/ubiquiti-uap.jpg" alt="Ubiquiti Access point" class="content-center" style="max-width: 50%">
 
 Wifi access points supporting the standards b/g/n/ac. I use nanoHDs to cover the habited floors of my house given that they have a better range and performance than the AC-Lite.
 

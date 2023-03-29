@@ -18,7 +18,7 @@ const relatedArticles = z.object({
 		links: []
 	})
 
-const status = z.enum(['Live', 'Evaluated', 'Deprecated'])
+const status = z.enum(['Live', 'Development', 'Evaluation', 'Deprecated'])
 
 const general = defineCollection({
 	schema: z.object({
